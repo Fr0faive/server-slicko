@@ -42,7 +42,7 @@ const login = async (request) => {
 
   const user = await prismaClient.user.findUnique({
     where: {
-      username: "test",
+      username: loginRequest.username,
     },
     select: {
       username: true,

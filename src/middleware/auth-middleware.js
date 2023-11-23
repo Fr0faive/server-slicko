@@ -4,7 +4,7 @@ export const authMiddleware = async (req, res, next) => {
   const token = req.get("Authorization");
   if (!token) {
     return res.status(401).json({
-      errors: "Unauthorized",
+      errors: "Unauthorized 1",
     });
   } else {
     const user = await prismaClient.user.findFirst({
@@ -14,7 +14,7 @@ export const authMiddleware = async (req, res, next) => {
     });
     if (!user) {
       return res.status(401).json({
-        errors: "Unauthorized",
+        errors: "Unauthorized 2",
       });
     } else {
       req.user = user;
