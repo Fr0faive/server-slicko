@@ -18,3 +18,13 @@ model User {
   token String? @db.VarChar(255)
   roles String? @db.VarChar(255)
 }
+
+model Products {
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(255)
+  price Int @db.Integer
+  description String? @db.Text
+  image String? @db.Text
+  stock Int? @db.Integer
+  category String? @db.VarChar(255)
+}

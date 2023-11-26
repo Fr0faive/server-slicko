@@ -1,13 +1,7 @@
 import supertest from "supertest";
 import { web } from "../src/application/web.js";
 import { logger } from "../src/application/logging.js";
-import {
-  createTestArticle,
-  createTestUser,
-  getTestUser,
-  removeTestUser,
-  removeTestArticle,
-} from "./test-utils";
+import { createTestUser, getTestUser, removeTestUser } from "./test-utils";
 import bcrypt from "bcrypt";
 
 describe("POST /api/users", function () {
@@ -255,29 +249,5 @@ describe("DELETE /api/users/current", function () {
 
     expect(result.status).toBe(401);
     expect(result.body.errors).toBeDefined();
-  });
-});
-
-describe("POST /api/articles", function () {
-  beforeEach(async () => {
-    await createTestArticle();
-  });
-
-  afterEach(async () => {
-    await removeTestArticle();
-  });
-
-  it("should can create article", async () => {
-    const result = await supertest(web)
-      .post("/api/articles")
-      .set("Authorization", "test")
-      .send({
-        title: "test",
-        content: "test",
-        description: "test",
-        category: "test",
-      });
-    expect(result.status).toBe(200);
-    expect(result.body.data.title).toBe("test");
   });
 });
