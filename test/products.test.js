@@ -44,6 +44,7 @@ describe("GET /api/products", function () {
   beforeAll(async () => {
     await createTestUser();
     await createTestProduct();
+    await createTestProduct();
   });
 
   afterAll(async () => {
