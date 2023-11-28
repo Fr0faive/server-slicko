@@ -35,7 +35,7 @@ const createTestProduct = async () => {
       price: 1000,
       description: "test",
       stock: 10,
-      token: "test",
+      image: "test",
     },
   });
 };

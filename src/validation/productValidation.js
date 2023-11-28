@@ -8,4 +8,11 @@ const createProductValidation = Joi.object({
   stock: Joi.number().optional(),
 });
 
-export { createProductValidation };
+const getProductByIdValidation = Joi.number().required();
+const getProductValidation = Joi.string().max(100).required();
+
+export {
+  createProductValidation,
+  getProductByIdValidation,
+  getProductValidation,
+};

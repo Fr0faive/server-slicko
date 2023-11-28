@@ -9,5 +9,4 @@ web.use(cors());
 web.use(express.json());
 web.use(publicRouter);
 web.use(userRouter);
-web.use(productRouter);
 web.use(errorMiddleware);

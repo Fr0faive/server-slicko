@@ -9,8 +9,11 @@ userRouter.get("/api/users/current", userController.getUser);
 userRouter.patch("/api/users/current", userController.update);
 userRouter.delete("/api/users/logout", userController.logout);
 
-const productRouter = new express.Router();
-productRouter.use(authMiddleware);
-productRouter.post("/api/products", productController.createProduct);
+// Products
+userRouter.use(authMiddleware);
+userRouter.post("/api/products", productController.createProduct);
+userRouter.get("/api/products/:id", productController.getProductById);
+userRouter.get("/api/products", productController.getProductAll);
+userRouter.get("/api/products/:name", productController.getProductByName);
 
-export { userRouter, productRouter };
+export { userRouter };
