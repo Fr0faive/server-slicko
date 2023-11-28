@@ -70,4 +70,39 @@ const getProductByName = async (name) => {
   return products;
 };
 
-export default { create, getProductById, getProductAll, getProductByName };
+const updateProduct = async (id, product) => {
+  const idInt = parseInt(id);
+  const updateProduct = await prismaClient.products.update({
+    where: {
+      product_id: idInt,
+    },
+    data: product,
+    select: {
+      product_id: true,
+      name: true,
+      price: true,
+      description: true,
+      image: true,
+      stock: true,
+    },
+  });
+  return updateProduct;
+};
+
+const deleteProduct = async (id) => {
+  const idInt = parseInt(id);
+  const deleteProduct = await prismaClient.products.delete({
+    where: {
+      product_id: idInt,
+    },
+  });
+  return deleteProduct;
+};
+
+export default {
+  create,
+  getProductById,
+  getProductAll,
+  getProductByName,
+  updateProduct,
+};

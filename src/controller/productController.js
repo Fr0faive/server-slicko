@@ -44,9 +44,33 @@ const getProductByName = async (req, res, next) => {
   }
 };
 
+const updateProduct = async (req, res, next) => {
+  try {
+    const result = await productService.update(req.body);
+    res.status(200).json({
+      data: result,
+    });
+  } catch (e) {
+    next(e);
+  }
+};
+
+const deleteProduct = async (req, res, next) => {
+  try {
+    const result = await productService.delete(req.params.id);
+    res.status(200).json({
+      data: result,
+    });
+  } catch (e) {
+    next(e);
+  }
+};
+
 export default {
   createProduct,
   getProductById,
   getProductAll,
   getProductByName,
+  updateProduct,
+  deleteProduct,
 };

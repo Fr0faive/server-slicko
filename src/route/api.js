@@ -15,5 +15,7 @@ userRouter.post("/api/products", productController.createProduct);
 userRouter.get("/api/products/:id", productController.getProductById);
 userRouter.get("/api/products", productController.getProductAll);
 userRouter.get("/api/products/:name", productController.getProductByName);
+userRouter.patch("/api/products/:id", productController.updateProduct);
+userRouter.delete("/api/products/:id", productController.deleteProduct);
 
 export { userRouter };
