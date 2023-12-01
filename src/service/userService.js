@@ -87,8 +87,10 @@ const getUser = async (username) => {
       username: username,
     },
     select: {
+      user_id: true,
       username: true,
       email: true,
+      roles: true,
     },
   });
 
