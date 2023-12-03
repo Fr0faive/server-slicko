@@ -2,7 +2,17 @@ import productService from "../service/productService.js";
 
 const createProduct = async (req, res, next) => {
   try {
-    const result = await productService.create(req.body);
+    const { name, description, price, stock } = req.body;
+    const imagePath = req.file.path.replace("\\", "/");
+    const productData = {
+      name,
+      description,
+      price,
+      stock,
+      image: imagePath,
+    };
+
+    const result = await productService.create(productData);
     res.status(200).json({
       data: result,
     });
