@@ -23,7 +23,7 @@ const createProduct = async (req, res, next) => {
 
 const getProductById = async (req, res, next) => {
   try {
-    const result = await productService.getProductById(req.params.id);
+    const result = await productService.getProductById(req.params.productId);
     res.status(200).json({
       data: result,
     });
@@ -43,20 +43,18 @@ const getProductAll = async (req, res, next) => {
   }
 };
 
-const getProductByName = async (req, res, next) => {
-  try {
-    const result = await productService.getProductByName(req.params.name);
-    res.status(200).json({
-      data: result,
-    });
-  } catch (e) {
-    next(e);
-  }
-};
-
 const updateProduct = async (req, res, next) => {
   try {
-    const result = await productService.update(req.body);
+    const { name, description, price, stock } = req.body;
+    const imagePath = req.file.path.replace("\\", "/");
+    const productData = {
+      name,
+      description,
+      price,
+      stock,
+      image: imagePath,
+    };
+    const result = await productService.update(req.params.id, productData);
     res.status(200).json({
       data: result,
     });
@@ -80,7 +78,6 @@ export default {
   createProduct,
   getProductById,
   getProductAll,
-  getProductByName,
   updateProduct,
   deleteProduct,
 };

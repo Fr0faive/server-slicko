@@ -4,7 +4,7 @@
   "description": "RESTful API Slickonveksi",
   "main": "src/main.js",
   "scripts": {
-    "start": "node src/main.js",
+    "start": "nodemon src/main.js",
     "test": "jest -i"
   },
   "jest": {
