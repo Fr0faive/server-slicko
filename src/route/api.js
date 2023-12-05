@@ -13,7 +13,7 @@ userRouter.delete("/api/users/logout", userController.logout);
 // Products
 userRouter.use(upload.single("image"));
 userRouter.post("/api/products", productController.createProduct);
-userRouter.put("/api/products/:id", productController.updateProduct);
-userRouter.delete("/api/products/:id", productController.deleteProduct);
+userRouter.put("/api/products/:productId", productController.updateProduct);
+userRouter.delete("/api/products/:productId", productController.deleteProduct);
 
 export { userRouter };

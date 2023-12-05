@@ -46,15 +46,16 @@ const getProductAll = async (req, res, next) => {
 const updateProduct = async (req, res, next) => {
   try {
     const { name, description, price, stock } = req.body;
-    const imagePath = req.file.path.replace("\\", "/");
     const productData = {
       name,
       description,
       price,
       stock,
-      image: imagePath,
     };
-    const result = await productService.update(req.params.id, productData);
+    const result = await productService.updateProduct(
+      req.params.productId,
+      productData
+    );
     res.status(200).json({
       data: result,
     });

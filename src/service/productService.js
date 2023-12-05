@@ -1,6 +1,7 @@
 import {
   createProductValidation,
   getProductByIdValidation,
+  updateProductValidation,
 } from "../validation/productValidation.js";
 import { validation } from "../validation/validation.js";
 import { prismaClient } from "../application/database.js";
@@ -42,6 +43,9 @@ const getProductById = async (id) => {
 
 const getProductAll = async () => {
   const products = await prismaClient.products.findMany({
+    orderBy: {
+      product_id: "asc",
+    },
     select: {
       product_id: true,
       name: true,
@@ -54,11 +58,12 @@ const getProductAll = async () => {
   return products;
 };
 
-const updateProduct = async (id, product) => {
-  const idInt = parseInt(id);
+const updateProduct = async (id, dataProduct) => {
+  id = validation(getProductByIdValidation, id);
+  const product = validation(updateProductValidation, dataProduct);
   const updateProduct = await prismaClient.products.update({
     where: {
-      product_id: idInt,
+      product_id: id,
     },
     data: product,
     select: {
