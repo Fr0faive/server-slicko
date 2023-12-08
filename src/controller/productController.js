@@ -3,7 +3,8 @@ import productService from "../service/productService.js";
 const createProduct = async (req, res, next) => {
   try {
     const { name, description, price, stock } = req.body;
-    const imagePath = req.file.path.replace("\\", "/");
+    const imagePath =
+      "https://" + req.get("host") + "/" + req.file.path.replace("\\", "/");
     const productData = {
       name,
       description,

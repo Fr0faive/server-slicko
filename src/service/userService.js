@@ -164,4 +164,16 @@ const logout = async (username) => {
   });
 };
 
-export default { register, login, getUser, update, logout };
+const getAllUser = async () => {
+  const users = await prismaClient.user.findMany({
+    select: {
+      user_id: true,
+      username: true,
+      email: true,
+      roles: true,
+    },
+  });
+  return users;
+};
+
+export default { register, login, getUser, update, logout, getAllUser };
