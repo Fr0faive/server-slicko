@@ -65,9 +65,9 @@ const updateProduct = async (req, res, next) => {
   }
 };
 
-const deleteProduct = async (req, res, next) => {
+const delProduct = async (req, res, next) => {
   try {
-    const result = await productService.delete(req.params.id);
+    const result = await productService.delProduct(req.params.productId);
     res.status(200).json({
       data: result,
     });
@@ -81,5 +81,5 @@ export default {
   getProductById,
   getProductAll,
   updateProduct,
-  deleteProduct,
+  delProduct,
 };

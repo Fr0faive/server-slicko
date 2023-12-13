@@ -15,6 +15,6 @@ userRouter.delete("/api/users/logout", userController.logout);
 userRouter.use(upload.single("image"));
 userRouter.post("/api/products", productController.createProduct);
 userRouter.put("/api/products/:productId", productController.updateProduct);
-userRouter.delete("/api/products/:productId", productController.deleteProduct);
+userRouter.delete("/api/products/:productId", productController.delProduct);
 
 export { userRouter };
